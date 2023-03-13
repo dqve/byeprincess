@@ -74,6 +74,23 @@ function swapCards(direction) {
 		// Start remove card classes *******
 		// previousCardEl.classList.remove("previous--card");
 
+		cardList.forEach((each) => {
+			each?.classList.contains("current--card") ?
+				each.classList.remove("current--card") :
+				each?.classList.contains("next--card") ?
+					each.classList.remove("next--card") :
+					each?.classList.contains("previous--card") &&
+					each.classList.remove("previous--card");
+		})
+		imageList.forEach((each) => {
+			each?.classList.contains("current--image") ?
+				each.classList.remove("current--image") :
+				each?.classList.contains("next--image") ?
+					each.classList.remove("next--image") :
+					each?.classList.contains("previous--image") &&
+					each.classList.remove("previous--image");
+		})
+
 		currentCardEl?.classList.contains("current--card") ?
 			currentCardEl.classList.remove("current--card") :
 			currentCardEl?.classList.contains("next--card") ?
@@ -176,7 +193,7 @@ function swapCards(direction) {
 
 			currentImageIndex = currentImageIndex <= 0 ? imageList.length - 1 : currentImageIndex - 1;
 			previousImageIndex = previousImageIndex <= 0 ? imageList.length - 1 : previousImageIndex - 1;
-			nextImageIndex = nextImageIndex <= 0 ? imageList.length - 1 : previousImageIndex - 1;
+			nextImageIndex = nextImageIndex <= 0 ? imageList.length - 1 : nextImageIndex - 1;
 
 			// CurrentFirstImage = CurrentFirstImage == 0 ? imageList.length - 1 : CurrentFirstImage - 1;
 
@@ -249,6 +266,18 @@ function changeInfo(direction) {
 
 
 	function swapInfosClass() {
+
+		// infoList.forEach((each) => {
+		// 	each?.classList.contains("current--info") ?
+		// 		each.classList.remove("current--info") :
+		// 		each?.classList.contains("next--info") ?
+		// 			each.classList.remove("next--info") :
+		// 			each?.classList.contains("previous--info") &&
+		// 			each.classList.remove("previous--info");
+		// });
+
+	// infoList.forEach((each) => each.style.display = "none" );
+
 		currentInfoEl?.classList.contains("current--info") ?
 			currentInfoEl.classList.remove("current--info") :
 			currentInfoEl?.classList.contains("next--info") ?
@@ -404,7 +433,7 @@ const waitForImages = () => {
 			}
 		});
 	});
-	
+
 	myMusic.autoplay = true;
 	myMusic.load();
 };
